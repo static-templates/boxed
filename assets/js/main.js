@@ -30,6 +30,7 @@ window.slideLoopInterval = setInterval(function(){
 }, 4000);
 
 window.nextSlide = function(){
+    console.log('clicked');
     document.querySelector('.slide-' + activeSlide).classList.remove('active');
     activeSlide += 1;
     if(activeSlide > (totalSlides-1)){

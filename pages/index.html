@@ -1,7 +1,11 @@
-<layout title="Boxed Template" src="main.html">
+<layout title="Welcome to the Homepage" src="main.html">
     <!-- TO DO : Fix the slider -->
-   <!-- <include src="posts-slider.html" count="3"></include> -->
-    <div class="max-w-4xl mx-auto mb-32 px-6 xl:px-0">
+    <section class="my-8">
+        <include src="posts-slider.html" count="3"></include>
+        <div class="flex items-center justify-center w-full max-w-5xl p-10 mx-auto my-10 text-base font-semibold text-white bg-black dark:bg-neutral-100 dark:text-black">
+            Welcome to the Boxed template. This template can be used for a blog, portfolio, or any other type of website. It's built with Tailwind CSS, Vanilla JS, and a sprinkle of Alpine.js and it's fully responsive.
+        </div>
         <include src="posts-loop.html"></include>
-    </div>
+    </section>
+    
 </layout>

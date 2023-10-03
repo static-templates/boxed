@@ -1,13 +1,15 @@
 <layout title="{frontmatter.title}" src="main.html">
-
-    <main class="relative z-30 max-w-4xl pb-1 mx-auto mt-10 bg-white dark:bg-gray-900 md:rounded-t-md text-neutral-900">
-        <div class="relative flex flex-col px-5 pt-6 border-t border-b-0 md:border-r md:border-l md:pt-20 lg:px-0 justify-stretch md:rounded-t-2xl border-neutral-200 dark:border-neutral-800">
-            <div class="absolute top-0 left-0 hidden w-px h-full mt-1 -translate-x-px md:block bg-gradient-to-b from-transparent to-white dark:to-neutral-950"></div>
-            <div class="absolute top-0 right-0 hidden w-px h-full mt-1 translate-x-px md:block bg-gradient-to-b from-transparent to-white dark:to-neutral-950"></div>
-            <h1 class="w-full max-w-2xl mx-auto text-3xl font-bold leading-tight tracking-tighter text-left md:mb-12 md:text-4xl dark:text-neutral-100 lg:text-5xl md:leading-none">{frontmatter.title}</h1>
-        </div>
-
-        <article class="w-full max-w-2xl mx-auto mb-20 prose-sm prose px-7 lg:px-0 lg:prose-lg dark:prose-invert">
+    <div class="relative w-full py-5 mt-6 border-0 border-black dark:border-gray-900 dark:bg-black">
+        <div class="flex flex-col items-center justify-center max-w-3xl mx-auto">
+        <h1 class="mb-5 text-5xl font-black text-center dark:text-white">
+            {frontmatter.title}
+        </h1>
+        <p class="mb-0 -mt-2 text-sm font-medium tracking-widest text-gray-800 uppercase dark:text-gray-400">Created on {frontmatter.dateFormatted}</p>
+    </div>
+    </div>
+    <main class="relative z-30 max-w-4xl pb-1 mx-auto text-neutral-900">
+        <!-- <h1 class="w-full mx-auto text-3xl font-bold leading-tight tracking-tighter text-left md:mb-12 md:text-4xl dark:text-neutral-100 lg:text-5xl md:leading-none">{frontmatter.title}</h1> -->
+        <article class="w-full max-w-3xl mx-auto mb-20 prose-sm prose px-7 lg:px-0 lg:prose-xl dark:prose-invert">
             {content}
         </article>
     </main>

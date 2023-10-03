@@ -1,15 +1,14 @@
-<section class="relative z-20 mx-auto my-12 7 lg:px-0">
-    <div class="max-w-4xl mx-auto mb-32 px-6 xl:px-0 dark:bg-gray-900 dark:text-white">
-
+<section class="relative z-20 px-10 mx-auto my-10 7 lg:px-10">
+    <div class="max-w-5xl px-6 mx-auto xl:px-0 dark:text-white">
         <div class="grid grid-cols-2 gap-8">
             <ForEach content="post" as="post" count="{count}">
-                <div class="cursor-pointer col-span-2 sm:col-span-1 border-2 border-black dark:border-gray-900 relative transform duration-150 ease-out hover:scale-105" onClick="window.location='{post.link}'">
+                <div class="relative col-span-2 duration-150 ease-out transform border-2 border-black cursor-pointer sm:col-span-1 dark:border-neutral-600 hover:scale-105" onClick="window.location='{post.link}'">
                     <img src="{post.image}" class="w-full h-auto">
                     <div class="p-5 pb-6">
                         <h2 class="mb-2">
-                            <a href="{post.link}" class="text-2xl tracking-tight leading-tight font-bold dark:text-gray-100">{post.title}</a>
+                            <a href="{post.link}" class="text-2xl font-bold leading-tight tracking-tight dark:text-gray-100">{post.title}</a>
                         </h2>
-                        <p class="text-gray-500 dark:text-gray-300 text-sm tracking-widest font-medium mb-2">Written on {post.dateFormatted}</p>
+                        <p class="mb-2 text-sm font-medium tracking-widest text-gray-500 dark:text-gray-300">Written on {post.dateFormatted}</p>
                         <p class="text-gray-700 dark:text-gray-400">
                             <span>{post.description}</span>
                         </p>
@@ -17,6 +16,5 @@
                 </div>
             </ForEach>
         </div>
-
     </div>
 </section>

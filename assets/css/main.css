@@ -3,3 +3,17 @@
 @tailwind utilities;
 
 /* Add Your Custom CSS Here */
+
+
+.slider{
+    width:100%;
+}
+
+.slide {
+    width:100%;
+    opacity:0;
+}
+
+.slide.active {
+    opacity:1;
+}

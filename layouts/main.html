@@ -14,9 +14,21 @@
         }
     </script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+
+
     <style>
+
         .prose img{
-            border-radius: 20px;
+            border-radius: 8px;
+        }
+        h1, h2, h3, h4, h5, h6{
+            font-family: 'Oswald', sans-serif;
+        }
+        .oswald{
+            font-family: 'Oswald', sans-serif;
         }
     </style>
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.png">
@@ -24,15 +36,23 @@
     {tailwindcss}
 </head>
 <body class="antialiased">
-    <div class="bg-white dark:bg-gray-900">
-        <div class="relative pt-6 sm:pt-8 lg:pt-10">
-            <div class="max-w-5xl mx-auto flex justify-center items-center h-16 select-none px-6 xl:px-0">
+
+    <div class="fixed top-0 left-0 z-50 w-12 h-screen text-black bg-white border-r-2 border-black dark:bg-neutral-950 dark:border-neutral-950">
+       
+        <div class="fixed bottom-0 left-0 items-center hidden h-12 ml-6 text-xs font-thin leading-none text-gray-700 uppercase transition-colors duration-150 origin-left transform -rotate-90 translate-y-1 dark:text-gray-200 hover:text-black ease sm:flex">
+            <div class="font-medium text-center"><span class="font-bold">Boxed Template · </span> {title}</div>
+        </div>
+    </div>
+
+    <div class="bg-white dark:bg-black">
+        <div class="relative pt-5">
+            <div class="flex items-center justify-center h-16 max-w-5xl px-6 mx-auto select-none xl:px-0">
                 <include src="logo.html"></include>
             </div>
         </div>
 
         <!-- Sidebar Menu Button -->
-        <div class="absolute left-0 top-0 mt-10 sm:mt-12 ml-6 sm:ml-10 w-8 h-6 flex flex-col justify-between cursor-pointer z-10" onClick="showMenu()">
+        <div class="absolute top-0 left-0 z-10 flex flex-col justify-between w-8 h-6 mt-10 ml-6 translate-x-1 -translate-y-px cursor-pointer sm:mt-10 sm:ml-20" onClick="showMenu()">
             <span class="w-8 h-1 bg-black dark:bg-white"></span>
             <span class="w-6 h-1 bg-black dark:bg-white"></span>
             <span class="w-4 h-1 bg-black dark:bg-white"></span>
@@ -40,30 +60,30 @@
         <!-- End Sidebar Menu Button -->
 
         <!-- Sidebar Menu -->
-        <div class="fixed inset-0 overflow-hidden z-40 invisible" id="sidemenu">
+        <div class="fixed inset-0 z-40 invisible overflow-hidden" id="sidemenu">
             <div class="absolute inset-0 overflow-hidden">
 
-                <div class="absolute inset-0 bg-gray-900 bg-opacity-75 transition-opacity ease-in-out duration-500 opacity-0" onClick="hideMenu()" id="sidemenu-overlay"></div>
+                <div class="absolute inset-0 transition-opacity duration-500 ease-in-out bg-gray-900 bg-opacity-75 opacity-0" onClick="hideMenu()" id="sidemenu-overlay"></div>
 
-                <section class="absolute inset-y-0 left-0 max-w-full flex">
-                    <div class="w-screen max-w-sm transform transition ease-in-out duration-500 -translate-x-full" id="sidemenu-box">
-                        <div class="h-full flex flex-col space-y-6 py-10 sm:py-12 dark:bg-black bg-white shadow-xl overflow-y-scroll">
+                <section class="absolute inset-y-0 left-0 flex max-w-full">
+                    <div class="w-screen max-w-sm transition duration-500 ease-in-out transform -translate-x-full" id="sidemenu-box">
+                        <div class="flex flex-col h-full py-10 space-y-6 overflow-y-scroll bg-white shadow-xl sm:py-12 dark:bg-black">
                             <header class="px-6 sm:px-10">
                                 <div class="flex items-start justify-between space-x-10">
-                                    <h2 class="text-xl leading-7 font-black dark:text-gray-100 text-gray-900">
+                                    <h2 class="text-xl font-black leading-7 text-gray-900 dark:text-gray-100">
                                         Menu
                                     </h2>
-                                    <div class="mt-2 w-6 h-6 flex items-center relative cursor-pointer" onClick="hideMenu()">
-                                        <span class="w-6 h-1 transform dark:bg-white bg-gray-900 absolute right-0 top-0 -rotate-45"></span>
-                                        <span class="w-6 h-1 transform dark:bg-white bg-gray-900 absolute right-0 top-0 rotate-45"></span>
+                                    <div class="relative flex items-center w-6 h-6 mt-2 cursor-pointer" onClick="hideMenu()">
+                                        <span class="absolute top-0 right-0 w-6 h-1 transform -rotate-45 bg-gray-900 dark:bg-white"></span>
+                                        <span class="absolute top-0 right-0 w-6 h-1 transform rotate-45 bg-gray-900 dark:bg-white"></span>
                                     </div>
                                 </div>
                             </header>
                             <div class="relative flex-1 px-4 sm:px-6">
                                 <!-- Replace with your content -->
                                 <div class="absolute inset-0 px-6 sm:px-10">
-                                    <div class="h-full flex flex-col justify-center dark:text-gray-100 text-gray-900">
-                                        <a href="/" class="text-2xl font-black mb-2 uppercase -mt-10">Home</a>
+                                    <div class="flex flex-col justify-center h-full text-gray-900 dark:text-gray-100">
+                                        <a href="/" class="mb-2 -mt-10 text-2xl font-black uppercase">Home</a>
                                         <ForEach collection="menu">
                                             <a href="{menu.url}" class="relative flex items-center justify-center w-full px-3 py-2 font-medium tracking-wide text-center duration-200 ease-out sm:py-0 sm:mb-0 md:w-auto hover:text-neutral-900 dark:hover:text-white">{menu.name}</a>
                                         </ForEach>
@@ -79,22 +99,18 @@
         <!-- End Sidebar Menu -->
 
         <!-- DAY/NIGHT TOGGLE -->
-        <div class="w-10 h-10 absolute right-0 top-0 flex items-center justify-center mt-8 mr-6 sm:mr-8" id="day-toggle" x-data="{ day: window.day }">
-            <div class="w-8 h-8 relative cursor-pointer" @click="day = !day">
-                <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" :class="{ 'translate-y-10 opacity-0 ': day != true }" class="duration-200 transform ease-out absolute" stroke="currentColor"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" :class="{ 'translate-y-10 opacity-0 ': day == true }" class="duration-200 transform ease-out absolute text-white" class="absolute" stroke="currentColor"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+        <div class="absolute top-0 right-0 flex items-center justify-center w-10 h-10 mr-6 mt-7 sm:mr-8" id="day-toggle" x-data="{ day: window.day }">
+            <div class="relative w-8 h-8 cursor-pointer" @click="day = !day">
+                <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" :class="{ 'translate-y-10 opacity-0 ': day != true }" class="absolute duration-200 ease-out transform" stroke="currentColor"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" :class="{ 'translate-y-10 opacity-0 ': day == true }" class="absolute text-white duration-200 ease-out transform" class="absolute" stroke="currentColor"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
             </div>
         </div>
         <!-- END DAY/NIGHT TOGGLE -->
 
         {slot}
 
-        <a href="https://devdojo.com/devblog" class="fixed transform -rotate-90 ml-3 origin-left left-0 bottom-0 font-thin text-xs text-gray-700 dark:text-gray-200 hover:text-black leading-none transition-colors duration-150 ease uppercase font-thin hidden sm:block">
-            Crafted with dev <span class="font-bold">blog</span>
-        </a>
         <include src="footer.html"></include>
     </div>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js" defer></script>
 
     <script src="/assets/js/main.js"></script>
 </body>

@@ -1,36 +1,36 @@
-<div class="max-w-5xl mx-auto mb-20 sm:mb-20 lg:mb-16 px-6 xl:px-0 slider w-full dark:bg-gray-900 dark:text-white">
+<div class="w-full max-w-5xl px-6 mx-auto xl:px-0 slider dark:bg-black dark:text-white">
     <ForEach content="post" as="post" count="{count}">
+        
         <If condition="loop == 1">
-            <div class="w-full lg:max-w-5xl pr-12 lg:pr-0 flex items-center transition-all ease duration-500 absolute cursor-pointer slide slide-0 active" data-href="{post.link}" onClick="clickActiveSlide(event)">
+            <div class="absolute flex items-center w-full pr-12 transition-all duration-500 cursor-pointer select-none lg:max-w-5xl lg:pr-0 ease slide slide-0 active" data-href="/{post.slug}" onClick="clickActiveSlide(event)">
         </If>
+    
         <If condition="loop == 2">
-            <div class="w-full lg:max-w-5xl pr-12 lg:pr-0 flex items-center transition-all ease duration-500 absolute cursor-pointer slide slide-1" data-href="{post.link}" onClick="clickActiveSlide(event)">
+            <div class="absolute flex items-center w-full pr-12 transition-all duration-500 cursor-pointer select-none lg:max-w-5xl lg:pr-0 ease slide slide-1" data-href="/{post.slug}" onClick="clickActiveSlide(event)">
         </If>
+    
         <If condition="loop == 3">
-            <div class="w-full lg:max-w-5xl pr-12 lg:pr-0 flex items-center transition-all ease duration-500 absolute cursor-pointer slide slide-2" data-href="{post.link}" onClick="clickActiveSlide(event)">
+            <div class="absolute flex items-center w-full pr-12 transition-all duration-500 cursor-pointer select-none lg:max-w-5xl lg:pr-0 ease slide slide-2" data-href="/{post.slug}" onClick="clickActiveSlide(event)">
         </If>
-            <div class="absolute w-full bottom-0 lg:bottom-auto flex flex-col-reverse lg:flex-col z-20 -mb-16 md:-mb-0 pr-12 lg:pr-0">
-                <div class="md:container w-full lg:max-w-sm p-3 sm:p-5 lg:p-8 bg-white dark:bg-black border-2 border-black dark:border-gray-800 z-20 inline-block cursor-pointer">
-                    <h2 class="font-bold text-base sm:text-2xl lg:text-4xl leading-tight mb-1 lg:mb-4 dark:text-white line-clamp-3">{post.title}</h2>
-                    <span class="text-gray-800 dark:text-gray-300 text-xs sm:text-sm uppercase tracking-widest font-medium">Written on {post.dateFormatted}</span>
+        
+            <div class="absolute bottom-0 right-0 z-50 flex border-2 border-black dark:border-neutral-600">
+                <div class="flex items-center justify-center w-12 h-12 bg-white border-r-2 border-black cursor-pointer dark:border-neutral-600 dark:bg-black left">
+                    <svg fill="none" class="w-6 h-6 fill-current dark:text-white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                 </div>
-                <div class="flex w-full">
-                    <div class="w-auto lg:w-1/5 flex justify-end z-0">
-                        <div class="bg-white dark:bg-black w-12 h-12 flex items-center justify-center cursor-pointer border-2 border-black dark:border-gray-800 border-r-0 border-b-0 lg:border-b-2 border-t-2 lg:border-t-0 left">
-                            <svg fill="none" class="w-6 h-6 fill-current dark:text-white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                        </div>
-                    </div>
-                    <div class="w-auto lg:w-1/5 flex justify-start z-0 border-l-2 border-black dark:border-gray-800">
-                        <div class="bg-white dark:bg-black w-12 h-12 flex items-center justify-center cursor-pointer border-2 border-black dark:border-gray-800 border-l-0 border-b-0 lg:border-b-2 border-t-2 lg:border-t-0 right">
-                            <svg fill="none" class="w-6 h-6 fill-current dark:text-white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </div>
-                    </div>
+                <div class="flex items-center justify-center w-12 h-12 bg-white cursor-pointer dark:bg-black right">
+                    <svg fill="none" class="w-6 h-6 fill-current dark:text-white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </div>
+                
+            </div>
+            <div class="absolute bottom-0 right-0 z-20 flex flex-col-reverse w-full select-none lg:flex-col md:-mb-0 lg:pr-0">
+                <div class="z-20 inline-block w-full p-3 bg-white border-2 border-black cursor-pointer dark:border-neutral-600 md:container lg:max-w-sm sm:p-5 lg:p-8 dark:bg-black">
+                    <h2 class="mb-1 text-base font-bold leading-tight sm:text-2xl lg:text-4xl lg:mb-4 dark:text-white line-clamp-3">{post.title}</h2>
+                    <span class="text-xs font-medium tracking-widest text-gray-800 uppercase dark:text-gray-300 sm:text-sm">Written on {post.dateFormatted}</span>
                 </div>
             </div>
-            <div class="hidden lg:block lg:w-1/5"></div>
-            <div class="w-full lg:w-4/5">
-                <div class="relative">
-                    <img src="{post.image}" class="border-2 border-black dark:border-gray-900 cursor-pointer">
+            <div class="w-full">
+                <div class="relative border-2 border-black dark:border-neutral-600">
+                    <img src="{post.image}" class="object-cover w-full h-full cursor-pointer aspect-[16/9]">
                 </div>
             </div>
         </div>
