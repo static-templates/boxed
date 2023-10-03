@@ -37,9 +37,36 @@
 </head>
 <body class="antialiased">
 
-    <div class="fixed top-0 left-0 z-50 w-12 h-screen text-black bg-white border-r-2 border-black dark:bg-neutral-950 dark:border-neutral-950">
-       
-        <div class="fixed bottom-0 left-0 items-center hidden h-12 ml-6 text-xs font-thin leading-none text-gray-700 uppercase transition-colors duration-150 origin-left transform -rotate-90 translate-y-1 dark:text-gray-200 hover:text-black ease sm:flex">
+    <div x-data="
+            ticking: false; 
+        "
+        x-init="
+        window.addEventListener('scroll', function(e) {
+            this.lastKnownScrollY = window.scrollY;
+            if (!this.ticking) {
+                window.requestAnimationFrame(function() {
+                    const targetElement = document.getElementById('nav-border-animated');
+                    const targetElement2 = document.getElementById('nav-border-animated-2');
+                    const maxScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    
+                    // Calculate width as a percentage of how far the user has scrolled
+                    const heightPercentage = (this.lastKnownScrollY / maxScrollHeight) * 100;
+
+                    targetElement.style.height = `${Math.min(heightPercentage, 100)}%`;
+                    targetElement2.style.height = `${Math.min(heightPercentage, 100)}%`;
+                    this.ticking = false;
+                    this.ticking = false;
+                });
+
+                this.ticking = true;
+            }
+        });
+        
+        "   
+        class="fixed top-0 left-0 z-50 w-12 h-screen text-black bg-white border-r-2 border-black dark:bg-neutral-950 dark:border-neutral-950">
+        
+        
+        <div  class="fixed bottom-0 left-0 z-20 items-center hidden h-12 ml-6 text-xs font-thin leading-none text-gray-700 uppercase transition-colors duration-150 origin-left transform -rotate-90 translate-y-1 dark:text-gray-200 ease sm:flex">
             <div class="font-medium text-center"><span class="font-bold">Boxed Template · </span> {title}</div>
         </div>
     </div>

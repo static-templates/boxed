@@ -1,6 +1,5 @@
 let activeSlide = 0;
 let totalSlides = 0;
-let bodyEl = document.body;
 window.day = true;
 
 if ( localStorage.getItem('dark') ) {
@@ -124,13 +123,13 @@ document.getElementById('day-toggle').addEventListener('click', function(){
 
 
 function showDay(){
-    bodyEl.classList.remove('dark');
+    document.documentElement.classList.remove('dark');
     day = true;
     localStorage.removeItem('dark');
 }
 
 function showNight(){
-    bodyEl.classList.add('dark');
+    document.documentElement.classList.add('dark');
     day = false;
     localStorage.setItem('dark', true);
 }
