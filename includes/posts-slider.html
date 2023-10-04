@@ -1,16 +1,17 @@
-<div class="w-full max-w-5xl mx-auto sm:px-6 xl:px-0 slider dark:bg-black dark:text-white">
+<section class="relative max-w-full">
+<div class="relative w-auto max-w-5xl mx-auto slider lg:pl-0 dark:bg-black dark:text-white">
     <ForEach content="post" as="post" count="{count}" orderBy="dateFormatted">
         
         <If condition="loop == 1">
-            <div class="absolute flex items-center w-full transition-all duration-500 cursor-pointer select-none sm:pr-12 lg:max-w-5xl lg:pr-0 ease slide slide-0 active" data-href="{post.link}" onClick="clickActiveSlide(event)">
+            <div class="absolute flex items-center w-full transition-all duration-500 cursor-pointer select-none lg:max-w-5xl ease slide slide-0 active" data-href="{post.link}" onClick="clickActiveSlide(event)">
         </If>
     
         <If condition="loop == 2">
-            <div class="absolute flex items-center w-full transition-all duration-500 cursor-pointer select-none sm:pr-12 lg:max-w-5xl lg:pr-0 ease slide slide-1" data-href="{post.link}" onClick="clickActiveSlide(event)">
+            <div class="absolute flex items-center w-full transition-all duration-500 cursor-pointer select-none lg:max-w-5xl ease slide slide-1" data-href="{post.link}" onClick="clickActiveSlide(event)">
         </If>
     
         <If condition="loop == 3">
-            <div class="absolute flex items-center w-full transition-all duration-500 cursor-pointer select-none sm:pr-12 lg:max-w-5xl lg:pr-0 ease slide slide-2" data-href="{post.link}" onClick="clickActiveSlide(event)">
+            <div class="absolute flex items-center w-full transition-all duration-500 cursor-pointer select-none lg:max-w-5xl ease slide slide-2" data-href="{post.link}" onClick="clickActiveSlide(event)">
         </If>
         
             <div class="absolute bottom-0 right-0 z-30 flex border border-black dark:border-neutral-600">
@@ -36,3 +37,4 @@
         </div>
     </ForEach>
 </div>
+</section>
