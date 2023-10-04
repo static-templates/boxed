@@ -1,6 +1,9 @@
+import Alpine from 'alpinejs'
+window.Alpine = Alpine
+Alpine.start()
+
 let activeSlide = 0;
 let totalSlides = 0;
-window.day = true;
 
 if ( localStorage.getItem('dark') ) {
     showNight();
@@ -8,18 +11,43 @@ if ( localStorage.getItem('dark') ) {
     showDay();
 }
 
+document.getElementById('day-toggle').addEventListener('click', function(){
+    if(day){
+        showNight();
+    } else {
+        showDay();
+    }
+});
+
+function showDay(){
+    document.documentElement.classList.remove('dark');
+    day = true;
+    localStorage.removeItem('dark');
+}
+
+function showNight(){
+    document.documentElement.classList.add('dark');
+    day = false;
+    localStorage.setItem('dark', true);
+}
+
 recalculateSliderHeight();
 window.addEventListener('DOMContentLoaded', (event) => {
-    recalculateSliderHeight();
 
-    totalSlides = document.querySelectorAll('.slide').length;
-
-    let heightInterval = setInterval(function(){
+    if(document.querySelector('.slider')){
         recalculateSliderHeight();
-        if( document.querySelector('.slider') && document.querySelector('.slider').offsetHeight > 100){
-            clearInterval(heightInterval);   
-        }
-    }, 100);
+
+        totalSlides = document.querySelectorAll('.slide').length;
+
+        let heightInterval = setInterval(function(){
+            recalculateSliderHeight();
+            if( document.querySelector('.slider') && document.querySelector('.slider').offsetHeight > 100){
+                clearInterval(heightInterval);   
+            }
+        }, 100);
+
+        sliderButtons();
+    }
 
     document.getElementsByTagName('body')[0].classList.remove('opacity-0');
 });
@@ -29,7 +57,6 @@ window.slideLoopInterval = setInterval(function(){
 }, 4000);
 
 window.nextSlide = function(){
-    console.log('clicked');
     document.querySelector('.slide-' + activeSlide).classList.remove('active');
     activeSlide += 1;
     if(activeSlide > (totalSlides-1)){
@@ -53,22 +80,24 @@ window.prevSlide = function(){
     recalculateSliderHeight();
 }
 
-// Click Left and Right Events
-let leftBtns = document.querySelectorAll('.left');
-for(i=0; i<leftBtns.length; i++){
-    leftBtns[i].addEventListener('click', function(){
-        clearInterval(slideLoopInterval);
-        console.log('left');
-        prevSlide();
-    });
-}
+function sliderButtons(){
+    // Click Left and Right Events
+    let leftBtns = document.querySelectorAll('.left');
+    for(i=0; i<leftBtns.length; i++){
+        leftBtns[i].addEventListener('click', function(){
+            clearInterval(slideLoopInterval);
+            console.log('left');
+            prevSlide();
+        });
+    }
 
-let rightBtns = document.querySelectorAll('.right');
-for(i=0; i<rightBtns.length; i++){
-    rightBtns[i].addEventListener('click', function(){
-        clearInterval(slideLoopInterval);
-        nextSlide();
-    });
+    let rightBtns = document.querySelectorAll('.right');
+    for(i=0; i<rightBtns.length; i++){
+        rightBtns[i].addEventListener('click', function(){
+            clearInterval(slideLoopInterval);
+            nextSlide();
+        });
+    }
 }
 
 window.addEventListener('resize', function(){
@@ -107,29 +136,15 @@ window.hideMenu = function(){
     }, 500);
 }
 
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    if (evt.keyCode == 27) {
+        hideMenu();
+    }
+};
+
 function hasParentWithMatchingSelector (target, selector) {
     return [...document.querySelectorAll(selector)].some(el =>
         el !== target && el.contains(target)
     )
-}
-
-document.getElementById('day-toggle').addEventListener('click', function(){
-    if(day){
-        showNight();
-    } else {
-        showDay();
-    }
-});
-
-
-function showDay(){
-    document.documentElement.classList.remove('dark');
-    day = true;
-    localStorage.removeItem('dark');
-}
-
-function showNight(){
-    document.documentElement.classList.add('dark');
-    day = false;
-    localStorage.setItem('dark', true);
 }
