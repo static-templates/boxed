@@ -14,8 +14,8 @@
             <div class="absolute flex items-center w-full transition-all duration-500 cursor-pointer select-none lg:max-w-5xl ease slide slide-2" data-href="{post.link}" onClick="clickActiveSlide(event)">
         </If>
         
-            <div class="absolute bottom-0 right-0 z-30 flex border border-black dark:border-neutral-600">
-                <div class="flex items-center justify-center w-12 h-12 bg-white border-r border-black cursor-pointer dark:border-neutral-600 dark:bg-black left">
+            <div class="absolute bottom-0 right-0 z-30 flex border border-black dark:border-white">
+                <div class="flex items-center justify-center w-12 h-12 bg-white border-r border-black cursor-pointer dark:border-white dark:bg-black left">
                     <svg fill="none" class="w-6 h-6 fill-current dark:text-white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                 </div>
                 <div class="flex items-center justify-center w-12 h-12 bg-white cursor-pointer dark:bg-black right">
@@ -24,13 +24,13 @@
                 
             </div>
             <div class="absolute bottom-0 right-0 z-20 flex flex-col-reverse w-full select-none lg:flex-col md:-mb-0 lg:pr-0">
-                <div class="z-20 inline-block w-full p-3 bg-white border border-black cursor-pointer dark:border-neutral-600 md:container lg:max-w-sm sm:p-5 lg:p-8 dark:bg-black">
+                <div class="z-20 inline-block w-full p-3 bg-white border border-black cursor-pointer dark:border-white md:container lg:max-w-sm sm:p-5 lg:p-8 dark:bg-black">
                     <h2 class="mb-1 text-base font-bold leading-tight sm:text-2xl lg:text-4xl lg:mb-4 dark:text-white line-clamp-3">{post.title}</h2>
                     <span class="text-xs font-medium tracking-widest text-gray-800 uppercase dark:text-gray-300 sm:text-sm">Written on {post.dateFormatted}</span>
                 </div>
             </div>
             <div class="w-full rounded-md">
-                <div class="relative border border-black dark:border-neutral-600">
+                <div class="relative border border-t-0 border-black lg:border-t dark:border-white">
                     <img src="{post.image}" class="object-cover w-full h-full cursor-pointer aspect-[16/9]">
                 </div>
             </div>

@@ -2,7 +2,7 @@
     <div class="max-w-5xl mx-auto dark:text-white">
         <div class="grid grid-cols-2 lg:gap-8">
             <ForEach content="post" as="post" count="{count}" orderBy="title, desc">
-                <div class="relative col-span-2 duration-150 ease-out transform bg-white border border-black cursor-pointer dark:bg-black sm:col-span-1 dark:border-neutral-600 hover:scale-105" onClick="window.location='{post.link}'">
+                <div class="relative col-span-2 duration-150 ease-out transform bg-white border border-black cursor-pointer dark:bg-black sm:col-span-1 dark:border-white hover:scale-105" onClick="window.location='{post.link}'">
                     <img src="{post.image}" class="w-full h-auto">
                     <div class="p-5 pb-6">
                         <h2 class="mb-2">
