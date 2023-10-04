@@ -7,22 +7,23 @@
 
     <!-- Used to add dark mode right away, adding here prevents any flicker -->
     <script>
+        window.day = true;
         if (typeof(Storage) !== "undefined") {
-            if(localStorage.getItem('dark_mode') && localStorage.getItem('dark_mode') == 'true'){
+            if(localStorage.getItem('dark') && localStorage.getItem('dark') == 'true'){
                 document.documentElement.classList.add('dark');
+                window.day = false;
             }
         }
     </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
-
+        [x-cloak]{display:none}
         .prose img{
-            border-radius: 8px;
+            border-radius: 3px;
         }
         h1, h2, h3, h4, h5, h6{
             font-family: 'Oswald', sans-serif;
@@ -32,113 +33,16 @@
         }
     </style>
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.png">
-    <script src="//unpkg.com/alpinejs" defer></script>
     {tailwindcss}
 </head>
-<body class="antialiased">
+<body class="antialiased bg-white dark:bg-black">
 
-    <div x-data="
-            ticking: false; 
-        "
-        x-init="
-        window.addEventListener('scroll', function(e) {
-            this.lastKnownScrollY = window.scrollY;
-            if (!this.ticking) {
-                window.requestAnimationFrame(function() {
-                    const targetElement = document.getElementById('nav-border-animated');
-                    const targetElement2 = document.getElementById('nav-border-animated-2');
-                    const maxScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-                    
-                    // Calculate width as a percentage of how far the user has scrolled
-                    const heightPercentage = (this.lastKnownScrollY / maxScrollHeight) * 100;
-
-                    targetElement.style.height = `${Math.min(heightPercentage, 100)}%`;
-                    targetElement2.style.height = `${Math.min(heightPercentage, 100)}%`;
-                    this.ticking = false;
-                    this.ticking = false;
-                });
-
-                this.ticking = true;
-            }
-        });
-        
-        "   
-        class="fixed top-0 left-0 z-50 w-12 h-screen text-black bg-white border-r-2 border-black dark:bg-neutral-950 dark:border-neutral-950">
-        
-        
-        <div  class="fixed bottom-0 left-0 z-20 items-center hidden h-12 ml-6 text-xs font-thin leading-none text-gray-700 uppercase transition-colors duration-150 origin-left transform -rotate-90 translate-y-1 dark:text-gray-200 ease sm:flex">
-            <div class="font-medium text-center"><span class="font-bold">Boxed Template · </span> {title}</div>
-        </div>
-    </div>
-
-    <div class="bg-white dark:bg-black">
-        <div class="relative pt-5">
-            <div class="flex items-center justify-center h-16 max-w-5xl px-6 mx-auto select-none xl:px-0">
-                <include src="logo.html"></include>
-            </div>
-        </div>
-
-        <!-- Sidebar Menu Button -->
-        <div class="absolute top-0 left-0 z-10 flex flex-col justify-between w-8 h-6 mt-10 ml-6 translate-x-1 -translate-y-px cursor-pointer sm:mt-10 sm:ml-20" onClick="showMenu()">
-            <span class="w-8 h-1 bg-black dark:bg-white"></span>
-            <span class="w-6 h-1 bg-black dark:bg-white"></span>
-            <span class="w-4 h-1 bg-black dark:bg-white"></span>
-        </div>
-        <!-- End Sidebar Menu Button -->
-
-        <!-- Sidebar Menu -->
-        <div class="fixed inset-0 z-40 invisible overflow-hidden" id="sidemenu">
-            <div class="absolute inset-0 overflow-hidden">
-
-                <div class="absolute inset-0 transition-opacity duration-500 ease-in-out bg-gray-900 bg-opacity-75 opacity-0" onClick="hideMenu()" id="sidemenu-overlay"></div>
-
-                <section class="absolute inset-y-0 left-0 flex max-w-full">
-                    <div class="w-screen max-w-sm transition duration-500 ease-in-out transform -translate-x-full" id="sidemenu-box">
-                        <div class="flex flex-col h-full py-10 space-y-6 overflow-y-scroll bg-white shadow-xl sm:py-12 dark:bg-black">
-                            <header class="px-6 sm:px-10">
-                                <div class="flex items-start justify-between space-x-10">
-                                    <h2 class="text-xl font-black leading-7 text-gray-900 dark:text-gray-100">
-                                        Menu
-                                    </h2>
-                                    <div class="relative flex items-center w-6 h-6 mt-2 cursor-pointer" onClick="hideMenu()">
-                                        <span class="absolute top-0 right-0 w-6 h-1 transform -rotate-45 bg-gray-900 dark:bg-white"></span>
-                                        <span class="absolute top-0 right-0 w-6 h-1 transform rotate-45 bg-gray-900 dark:bg-white"></span>
-                                    </div>
-                                </div>
-                            </header>
-                            <div class="relative flex-1 px-4 sm:px-6">
-                                <!-- Replace with your content -->
-                                <div class="absolute inset-0 px-6 sm:px-10">
-                                    <div class="flex flex-col justify-center h-full text-gray-900 dark:text-gray-100">
-                                        <a href="/" class="mb-2 -mt-10 text-2xl font-black uppercase">Home</a>
-                                        <ForEach collection="menu">
-                                            <a href="{menu.url}" class="relative flex items-center justify-center w-full px-3 py-2 font-medium tracking-wide text-center duration-200 ease-out sm:py-0 sm:mb-0 md:w-auto hover:text-neutral-900 dark:hover:text-white">{menu.name}</a>
-                                        </ForEach>
-                                    </div>
-                                </div>
-                                <!-- /End replace -->
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-        <!-- End Sidebar Menu -->
-
-        <!-- DAY/NIGHT TOGGLE -->
-        <div class="absolute top-0 right-0 flex items-center justify-center w-10 h-10 mr-6 mt-7 sm:mr-8" id="day-toggle" x-data="{ day: window.day }">
-            <div class="relative w-8 h-8 cursor-pointer" @click="day = !day">
-                <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" :class="{ 'translate-y-10 opacity-0 ': day != true }" class="absolute duration-200 ease-out transform" stroke="currentColor"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" :class="{ 'translate-y-10 opacity-0 ': day == true }" class="absolute text-white duration-200 ease-out transform" class="absolute" stroke="currentColor"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-            </div>
-        </div>
-        <!-- END DAY/NIGHT TOGGLE -->
-
-        {slot}
-
-        <include src="footer.html"></include>
-    </div>
-
+    <include src="sidebar.html"></include>
+    <include src="sidebar-menu.html"></include>
+    <include src="header.html"></include>
+    <include src="day-night-toggle.html"></include>
+    {slot}
+    <include src="footer.html"></include>
     <script src="/assets/js/main.js"></script>
 </body>
 
